@@ -13,26 +13,71 @@ object gimenez {
     }
 }
 
+/*
+object galvanMio {
+    
+    // Dos atributos
+    var property sueldo = 15000 
+    var dinero = 0
+    var deuda = 0
+
+    method cobrar(monto) { 
+        sueldo -= deuda
+        //dinero += sueldo
+        deuda = 0
+    } 
+
+    method deuda() {
+        return deuda
+    }
+
+    method dinero() {
+        return dinero
+    }
+
+    method gastar(cuanto) {
+        if (dinero >= cuanto) dinero -= cuanto else deuda += cuanto
+    }
+
+}
+*/ // Galvan del profe
 object galvan {
     
-    var property sueldo = 15000 
+    var property sueldo = 15000
+    // Un solo atributo
+    var balance = 0
 
-    method cobrar(dinero) {
+    method cobrar(monto) {
+        balance += monto
+    }
 
+    method gastar(monto) {
+        balance -= monto
+    }
+
+    method deuda() {
+        return balance.min(0) * (-1)
+    }
+
+    method dinero() {
+        return balance.max(0)
     }
 
 }
 
 object baigorria {
 
-    var sueldo = 0 
+    // ¿Empandas vendidas se calcula o se guarda?
+    // Se guarda en un atributo
     var vendidas = 0
     var cobrado = 0
     
-    method vender(empanadasVendidas) {
-        sueldo += empanadasVendidas * 15
-        vendidas += empanadasVendidas
+    // ¿Sueldo se calcula o se guarda?
+    // Calcularl en un método de consulta
+    //var sueldo = 0 
 
+    method vender(empanadasVendidas) {
+        vendidas += empanadasVendidas
     }
 
     method informarVendidas() {
@@ -40,16 +85,16 @@ object baigorria {
     }
 
     method sueldo() {
-        return sueldo
+        return vendidas * 15
     }
 
     method totalCobrado() {
         return cobrado
     }
 
-    method cobrar(dinero) {
-        cobrado += sueldo
-        sueldo = 0
+    method cobrar(monto) {
+        cobrado += monto
+        vendidas = 0
     }
 
 
